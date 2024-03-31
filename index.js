@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const {join} = require("path");
 const fs = require("fs");
 const app = express();
-const PORT = 8000;
 
 
 app.use(bodyParser.json());
@@ -24,6 +23,8 @@ app.post('/json-data', (req, res) => {
     res.json({ message: 'Data received successfully' });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`App listening on port: ${port}`);
 });
